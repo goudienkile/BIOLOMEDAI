@@ -11,22 +11,32 @@ function App() {
     reference_range: "",
   });
 
+  // URL du Backend sur Render (Assure-toi qu'il est bien correct)
+  const API_URL = "https://mon-backend.onrender.com"; // Remplace par ton vrai lien Render
+
+  // Fonction pour gérer les changements dans les inputs
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Fonction pour soumettre le formulaire
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const API_URL = "https://mon-backend.onrender.com"; // Remplace par ton vrai lien Render
+    try {
+      const response = await fetch(`${API_URL}/add_sample/`, { 
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-const response = await fetch(`${API_URL}/add_sample/`, { 
-,
-      },
-      body: JSON.stringify(formData),
-    });
-
-    const data = await response.json();
-    alert(data.message || "Échantillon ajouté avec succès !");
+      const data = await response.json();
+      alert(data.message || "Échantillon ajouté avec succès !");
+    } catch (error) {
+      alert("Erreur lors de l'ajout de l'échantillon !");
+      console.error("Erreur:", error);
+    }
   };
 
   return (
