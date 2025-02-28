@@ -1,0 +1,13 @@
+import React from "react";
+
+function App() {
+  return (
+    <div style={{ textAlign: "center", padding: "20px" }}>
+      <h1>Bienvenue sur l'application de gestion des analyses biomédicales</h1>
+      <p>Ajoutez, analysez et visualisez vos échantillons.</p>
+    </div>
+  );
+}
+
+export default App;
+
