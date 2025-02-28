@@ -17,10 +17,10 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://127.0.0.1:8000/add_sample/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    const API_URL = "https://mon-backend.onrender.com"; // Remplace par ton vrai lien Render
+
+const response = await fetch(`${API_URL}/add_sample/`, { 
+,
       },
       body: JSON.stringify(formData),
     });
